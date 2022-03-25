@@ -5,8 +5,10 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import com.android.main.databinding.ActivityMainBinding
 import com.leaf.library.StatusBarUtil
+import com.llj.baselib.IOTLib
 import com.llj.baselib.IOTViewModel
 import com.llj.baselib.ui.IOTMainActivity
+import com.llj.baselib.utils.LogUtils
 import com.llj.baselib.utils.ToastUtils
 
 class MainActivity : IOTMainActivity<ActivityMainBinding>() {
@@ -22,7 +24,11 @@ class MainActivity : IOTMainActivity<ActivityMainBinding>() {
 
     override fun init() {
         super.init()
-        vm.connect(this, MainDataBean::class.java)
+        kotlin.runCatching {
+            vm.connect(this, MainDataBean::class.java)
+        }.onFailure {
+            LogUtils.d(IOTLib.TAG, "false:${it.message.toString()}")
+        }
         initMainView()
     }
 
@@ -77,8 +83,8 @@ class MainActivity : IOTMainActivity<ActivityMainBinding>() {
 
     @SuppressLint("SetTextI18n")
     private fun updateUI(mainDataBean: MainDataBean) {
-        mDataBinding.tvHump.text = "湿度:${(mainDataBean.hump * 100 / 10).toInt().toString()}%"
-        mDataBinding.tvTemp.text = "${(mainDataBean.temp * 100 / 10).toInt().toString()}°C"
+        mDataBinding.tvHump.text = "湿度:${((mainDataBean.hump * 10).toInt() / 10).toString()}%"
+        mDataBinding.tvTemp.text = "${((mainDataBean.temp * 10).toInt() / 10).toString()}°C"
         mDataBinding.tvPeople.text = if (mainDataBean.people == 0) "室内\n无人"
         else "室内\n有人"
     }
