@@ -42,8 +42,22 @@ class MainActivity : IOTMainActivity<ActivityMainBinding>() {
             else R.mipmap.window_close
             mDataBinding.ivWindow.setImageResource(iv)
         }
+        mDataBinding.ivLight.setOnClickListener {
+            if (it == null) return@setOnClickListener
+            if (vm.isLight.value == false) vm.turnOnLight()
+            else vm.turnOffLight()
+        }
+        mDataBinding.ivWindow.setOnClickListener {
+            if (it == null) return@setOnClickListener
+            if (vm.isWindow.value == false) vm.turnOnWindow()
+            else vm.turnOffWindow()
+        }
+        mDataBinding.ivFun.setOnClickListener {
+            if (it == null) return@setOnClickListener
+            if (vm.isFun.value == false) vm.turnOnFun()
+            else vm.turnOffFun()
+        }
     }
-
 
     @SuppressLint("ResourceAsColor")
     override fun offDevLine() {
