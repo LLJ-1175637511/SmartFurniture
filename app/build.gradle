@@ -51,5 +51,6 @@ dependencies {
 
     implementation 'androidx.fragment:fragment-ktx:1.2.5'
     implementation 'androidx.activity:activity-ktx:1.1.0'
+    implementation 'com.github.Ye-Miao:StatusBarUtil:1.7.5'
 
 }

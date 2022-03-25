@@ -24,6 +24,4 @@
 
 //leancloud 云服务 implementation 'cn.leancloud:realtime-android:7.2.3' implementation 'cn.leancloud:storage-android:7.2.3' implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
-//扫一扫依赖 implementation 'cn.yipianfengye.android:zxing-library:2.2'
-
 //本库git地址 implementation 'com.github.LLJ-1175637511:IOT-Libruary:v1.0.1'

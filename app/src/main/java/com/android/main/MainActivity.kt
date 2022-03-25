@@ -1,8 +1,10 @@
 package com.android.main
 
 import android.annotation.SuppressLint
+import android.os.Bundle
 import androidx.activity.viewModels
 import com.android.main.databinding.ActivityMainBinding
+import com.leaf.library.StatusBarUtil
 import com.llj.baselib.IOTViewModel
 import com.llj.baselib.ui.IOTMainActivity
 import com.llj.baselib.utils.ToastUtils
@@ -13,6 +15,11 @@ class MainActivity : IOTMainActivity<ActivityMainBinding>() {
 
     private val vm by viewModels<MainVM>()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        StatusBarUtil.setTransparentForWindow(this)
+    }
+
     override fun init() {
         super.init()
         vm.connect(this, MainDataBean::class.java)
@@ -20,24 +27,23 @@ class MainActivity : IOTMainActivity<ActivityMainBinding>() {
     }
 
     private fun initMainView() {
-//        initToolbar()
+        vm.isFun.observe(this) {
+            val iv = if (it) R.mipmap.fun_open
+            else R.mipmap.fun_close
+            mDataBinding.ivFun.setImageResource(iv)
+        }
+        vm.isLight.observe(this) {
+            val iv = if (it) R.mipmap.light_open
+            else R.mipmap.light_close
+            mDataBinding.ivLight.setImageResource(iv)
+        }
+        vm.isWindow.observe(this) {
+            val iv = if (it) R.mipmap.windows_open
+            else R.mipmap.window_close
+            mDataBinding.ivWindow.setImageResource(iv)
+        }
     }
 
-//    private fun initToolbar() {
-//        mDataBinding.toolbar.apply {
-//            toolbarBaseTitle.text = getString(R.string.app_name)
-//            toolbarBase.inflateMenu(R.menu.toolbar_menu)
-//            toolbarBase.setOnMenuItemClickListener { item ->
-//                when (item.itemId) {
-//                    R.id.quit_app -> {
-//                        startCommonActivity<LoginActivity>()
-//                        finish()
-//                    }
-//                }
-//                false
-//            }
-//        }
-//    }
 
     @SuppressLint("ResourceAsColor")
     override fun offDevLine() {
@@ -52,11 +58,19 @@ class MainActivity : IOTMainActivity<ActivityMainBinding>() {
     }
 
     override fun realData(data: Any?) {
-        ToastUtils.toastShort("data:${(data as MainDataBean).toString()}")
+        updateUI(data as MainDataBean)
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun updateUI(mainDataBean: MainDataBean) {
+        mDataBinding.tvHump.text = "湿度:${(mainDataBean.hump * 100 / 10).toInt().toString()}%"
+        mDataBinding.tvTemp.text = "${(mainDataBean.temp * 100 / 10).toInt().toString()}°C"
+        mDataBinding.tvPeople.text = if (mainDataBean.people == 0) "室内\n无人"
+        else "室内\n有人"
     }
 
     override fun webState(state: IOTViewModel.WebSocketType) {
-        mDataBinding.tvState.text = state.name
+
     }
 
 }

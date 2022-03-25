@@ -4,14 +4,36 @@ import com.llj.baselib.IOTInterfaceId;
 
 public class MainDataBean {
 
-    @IOTInterfaceId("14770")
-    private Float data;
+    @IOTInterfaceId("22683")
+    private Float temp;
 
-    public Float getData() {
-        return data;
+    @IOTInterfaceId("22684")
+    private Float hump;
+
+    @IOTInterfaceId("22686")
+    private int people;
+
+    public Float getTemp() {
+        return temp;
     }
 
-    public void setData(Float data) {
-        this.data = data;
+    public void setTemp(Float temp) {
+        this.temp = temp;
+    }
+
+    public Float getHump() {
+        return hump;
+    }
+
+    public void setHump(Float hump) {
+        this.hump = hump;
+    }
+
+    public int getPeople() {
+        return people;
+    }
+
+    public void setPeople(int people) {
+        this.people = people;
     }
 }
