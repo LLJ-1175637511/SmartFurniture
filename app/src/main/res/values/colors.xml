@@ -7,9 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="colorPrimary">#FFDAE6</color>
-    <color name="colorPrimaryDark">#FFDAE6</color>
-    <color name="colorAccent">#FFDAE6</color>
+    <color name="colorPrimary">#f2ccb5</color>
+    <color name="colorPrimaryDark">#f2ccb5</color>
+    <color name="colorAccent">#f2ccb5</color>
     <color name="scan_corner_color">#00acff</color>
     <color name="camera_bg">#73000000</color>
     <color name="blue">#00BCD4</color>
