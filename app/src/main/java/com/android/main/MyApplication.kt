@@ -3,6 +3,7 @@ package com.android.main
 import android.app.Application
 import com.llj.baselib.IOTLib
 import com.llj.baselib.bean.UserConfigBean
+import com.llj.baselib.utils.LogUtils
 
 class MyApplication : Application() {
     override fun onCreate() {
@@ -15,5 +16,6 @@ class MyApplication : Application() {
             clientSecret = "e504b3533c"
         )
         IOTLib.init(applicationContext,bean)
+        LogUtils.openLog()
     }
 }
