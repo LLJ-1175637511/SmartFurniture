@@ -53,4 +53,10 @@ dependencies {
     implementation 'androidx.activity:activity-ktx:1.1.0'
     implementation 'com.github.Ye-Miao:StatusBarUtil:1.7.5'
 
+    //room
+    def room_version = "2.2.3"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+
 }

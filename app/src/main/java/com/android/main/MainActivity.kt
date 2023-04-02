@@ -63,6 +63,9 @@ class MainActivity : IOTMainActivity<ActivityMainBinding>() {
             if (vm.isFun.value == false) vm.turnOnFun()
             else vm.turnOffFun()
         }
+        mDataBinding.llHeadIcon.setOnClickListener {
+            startCommonActivity<MineActivity>()
+        }
     }
 
     @SuppressLint("ResourceAsColor")
