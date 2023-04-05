@@ -4,13 +4,13 @@ import com.llj.baselib.IOTInterfaceId;
 
 public class MainDataBean {
 
-    @IOTInterfaceId("22683")
+    @IOTInterfaceId("25723")
     private Float temp;
 
-    @IOTInterfaceId("22684")
+    @IOTInterfaceId("25724")
     private Float hump;
 
-    @IOTInterfaceId("22686")
+    @IOTInterfaceId("25725")
     private int people;
 
     public Float getTemp() {
