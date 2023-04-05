@@ -6,50 +6,91 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
         android:background="@drawable/background"
+        android:fitsSystemWindows="true"
         tools:context="com.android.main.MainActivity">
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5 天"
-            android:drawablePadding="4dp"
-            android:gravity="center"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="12dp"
             android:drawableStart="@drawable/xunzhang"
+            android:drawablePadding="4dp"
+            android:gravity="center"
+            android:text="5 天"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
-            android:id="@+id/llHeadIcon"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="15dp"
             android:gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <androidx.constraintlayout.utils.widget.ImageFilterView
-                android:id="@+id/ivHead"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                app:roundPercent="1"
-                android:src="@drawable/head_icon" />
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/llHeadIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <androidx.constraintlayout.utils.widget.ImageFilterView
+                    android:id="@+id/ivHead"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/head_icon"
+                    app:roundPercent="1" />
+
+                <TextView
+                    android:id="@+id/tvUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="胡悦"
+                    android:textColor="#F5BA97"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/ivHead"
+                    app:layout_constraintTop_toTopOf="@+id/ivHead" />
+
+            </LinearLayout>
+
             <TextView
-                android:id="@+id/tvUserName"
+                android:id="@+id/tvHistory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="胡悦"
-                android:textColor="#F5BA97"
-                android:textSize="16sp"
+                android:drawableStart="@mipmap/history"
+                android:drawablePadding="2dp"
+                android:paddingStart="4dp"
+                android:text="历史记录"
+                android:textColor="#F1C5AB"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/ivHead"
                 app:layout_constraintTop_toTopOf="@+id/ivHead" />
+
+            <TextView
+                android:id="@+id/tvBindDevice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:drawableStart="@mipmap/device"
+                android:drawablePadding="2dp"
+                android:paddingStart="4dp"
+                android:text="绑定设备"
+                android:textColor="#F1C5AB"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/ivHead"
+                app:layout_constraintTop_toTopOf="@+id/ivHead" />
+
 
         </LinearLayout>
 
@@ -58,24 +99,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="设备离线"
+            android:text="设备未绑定"
             android:textColor="@color/red"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
-            app:cardCornerRadius="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
             app:cardBackgroundColor="#57FFFFFF"
+            app:cardCornerRadius="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            app:layout_constraintVertical_bias="0.1">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
@@ -96,15 +137,16 @@
                     android:id="@+id/tvTemp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="18"
                     android:layout_marginBottom="8dp"
+                    android:text="0"
                     android:textColor="#ED777070"
                     android:textSize="70sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@id/tvWeather"
                     app:layout_constraintEnd_toStartOf="@+id/tvTempAppendText"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="@+id/tvWeather" />
+                    app:layout_constraintStart_toStartOf="@+id/tvWeather"
+                    tools:text="18" />
 
                 <TextView
                     android:id="@+id/tvTempAppendText"
@@ -127,20 +169,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:layout_marginBottom="20dp"
                     android:text="空气良  |  晴"
                     android:textSize="12sp"
-                    android:layout_marginBottom="20dp"
                     app:layout_constraintBottom_toTopOf="@+id/tvHump"
                     app:layout_constraintEnd_toEndOf="@+id/tvHump"
-                    app:layout_constraintStart_toStartOf="@+id/tvHump"/>
+                    app:layout_constraintStart_toStartOf="@+id/tvHump" />
 
                 <TextView
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
                     android:drawableEnd="@mipmap/location32"
                     android:gravity="center"
-                    android:layout_marginTop="12dp"
                     android:text="辽宁工业大学  "
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -165,12 +207,13 @@
                     android:layout_marginBottom="16dp"
                     android:drawableTop="@mipmap/hump64"
                     android:drawablePadding="3dp"
-                    android:text="湿度:56%"
+                    android:text="湿度:0%"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.45"
-                    app:layout_constraintStart_toEndOf="@+id/ivRabbit" />
+                    app:layout_constraintStart_toEndOf="@+id/ivRabbit"
+                    tools:text="湿度:30%" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>

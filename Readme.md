@@ -25,3 +25,6 @@
 //leancloud 云服务 implementation 'cn.leancloud:realtime-android:7.2.3' implementation 'cn.leancloud:storage-android:7.2.3' implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
 //本库git地址 implementation 'com.github.LLJ-1175637511:IOT-Libruary:v1.0.1'
+
+userConfig:
+{"appKey":"9cb78afe15","clientId":"1253","clientSecret":"e504b3533c","deviceId":"29150","userId":"22241"}
