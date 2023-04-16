@@ -13,7 +13,7 @@ interface RoomDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun save(vararg roomData: RoomEntity): List<Long>
 
-    @Query("select * from room_data where userId like :userId order by timestamp")
+    @Query("select * from room_log where userId like :userId order by timestamp")
     suspend fun getRoomDataList(userId:String = getUserId()): List<RoomEntity>
 
 }

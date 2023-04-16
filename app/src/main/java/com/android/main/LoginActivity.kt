@@ -48,7 +48,4 @@ class LoginActivity : IOTLoginActivity<ActivityLoginBinding>() {
             }
         }
     }
-
-
-
 }

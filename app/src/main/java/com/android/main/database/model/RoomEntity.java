@@ -4,24 +4,21 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.android.main.ExtKt;
-import com.llj.baselib.IOTInterfaceId;
 
-@Entity(tableName = "room_data")
+@Entity(tableName = "room_log")
 public class RoomEntity {
     @PrimaryKey(autoGenerate = true)
     public long id;
-    
+
     public String userId = ExtKt.getUserId();
 
-    public Long timestamp = System.currentTimeMillis();
+    //时间戳 以秒为单位记录
+    public Long timestamp = System.currentTimeMillis() / 1000;
 
-    @IOTInterfaceId("22683")
     public Float temp;
 
-    @IOTInterfaceId("22684")
     public Float hump;
 
-    @IOTInterfaceId("22686")
     public int people;
 
 }

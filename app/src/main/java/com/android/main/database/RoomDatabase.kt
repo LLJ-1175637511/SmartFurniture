@@ -9,4 +9,5 @@ import com.android.main.database.model.RoomEntity
 abstract class RoomDatabase : RoomDatabase() {
     val roomDao: RoomDao by lazy { createRoomDao() }
     abstract fun createRoomDao(): RoomDao
+
 }

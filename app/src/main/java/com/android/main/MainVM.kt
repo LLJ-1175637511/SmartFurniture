@@ -5,19 +5,9 @@ import androidx.lifecycle.viewModelScope
 import com.android.main.database.DatabaseManager
 import com.android.main.database.model.RoomEntity
 import com.android.main.model.RoomData
-import com.google.gson.Gson
 import com.llj.baselib.IOTCallBack
-import com.llj.baselib.IOTLib
 import com.llj.baselib.IOTViewModel
-import com.llj.baselib.bean.Const
-import com.llj.baselib.bean.UserConfigBean
-import com.llj.baselib.net.IOTRepository
-import com.llj.baselib.save
-import com.llj.baselib.utils.LogUtils
-import com.llj.baselib.utils.ToastUtils
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class MainVM : IOTViewModel(), IOTCallBack {
 

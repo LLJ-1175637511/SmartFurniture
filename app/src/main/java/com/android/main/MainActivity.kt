@@ -155,7 +155,7 @@ class MainActivity : IOTBaseActivity<ActivityMainBinding>() {
     @SuppressLint("SetTextI18n")
     private fun updateUI(roomEntity: RoomData) {
         mDataBinding.tvHump.text = "湿度:${((roomEntity.hump * 10).toInt() / 10).toString()}%"
-        mDataBinding.tvTemp.text = "${((roomEntity.temp * 10).toInt() / 10).toString()}°C"
+        mDataBinding.tvTemp.text = "${((roomEntity.temp * 10).toInt() / 10).toString()}"
         mDataBinding.tvPeople.text = if (roomEntity.people == 0) "室内\n无人"
         else "室内\n有人"
     }

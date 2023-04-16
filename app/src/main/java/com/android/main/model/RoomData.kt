@@ -3,12 +3,12 @@ package com.android.main.model
 import com.llj.baselib.IOTInterfaceId
 
 data class RoomData(
-    @IOTInterfaceId("22683")
+    @IOTInterfaceId("25723")
     var temp: Float = 0.0f,
 
-    @IOTInterfaceId("22684")
+    @IOTInterfaceId("25724")
     var hump: Float = 0.0f,
 
-    @IOTInterfaceId("22686")
+    @IOTInterfaceId("25725")
     var people: Int = 0
 )
