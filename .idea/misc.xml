@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.3145833333333333" />
         <entry key="..\:/E/Android/Graduation2022/CommonLib/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2555" />
         <entry key="..\:/E/Android/Graduation2022/CommonLib/app/src/main/res/drawable/water_begin.xml" value="0.2555" />
         <entry key="..\:/E/Android/Graduation2022/CommonLib/app/src/main/res/drawable/water_end.xml" value="0.2555" />
@@ -15,11 +16,13 @@
         <entry key="app/src/main/res/drawable/shape_rect_orange_low.xml" value="0.1105" />
         <entry key="app/src/main/res/drawable/shape_rect_pink_low.xml" value="0.1805" />
         <entry key="app/src/main/res/drawable/shape_rect_white.xml" value="0.1805" />
+        <entry key="app/src/main/res/layout/activity_history_log.xml" value="0.2625976562500001" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.24422030978732637" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25219879150390623" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.22056159420289856" />
         <entry key="app/src/main/res/layout/activity_mine.xml" value="0.1" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/view_toolbar.xml" value="0.3744489586871603" />
         <entry key="app/src/main/res/layout/water_login.xml" value="0.1" />
         <entry key="app/src/main/res/menu/toolbar_menu.xml" value="0.30512820512820515" />
       </map>

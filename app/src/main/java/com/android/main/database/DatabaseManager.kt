@@ -5,6 +5,7 @@ import com.llj.baselib.IOTLib
 
 object DatabaseManager {
 
+    //数据库名字
     private const val DB_NAME = "room.db"
 
     private val db: RoomDatabase by lazy {

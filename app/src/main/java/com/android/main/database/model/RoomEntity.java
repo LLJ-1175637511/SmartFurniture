@@ -13,7 +13,7 @@ public class RoomEntity {
     public String userId = ExtKt.getUserId();
 
     //时间戳 以秒为单位记录
-    public Long timestamp = System.currentTimeMillis() / 1000;
+    public Long timestamp = System.currentTimeMillis();
 
     public Float temp;
 

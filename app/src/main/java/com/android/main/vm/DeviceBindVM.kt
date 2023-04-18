@@ -1,9 +1,8 @@
-package com.android.main
+package com.android.main.vm
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.android.main.model.RoomData
 import com.google.gson.Gson
 import com.llj.baselib.IOTLib
 import com.llj.baselib.bean.UserConfigBean
@@ -22,6 +21,9 @@ class DeviceBindVM : ViewModel() {
 
     val mutableEventLiveData = MutableLiveData<Unit>()
 
+    /**
+     * 绑定设备
+     */
     fun bindDevice(configInfo: String) {
         kotlin.runCatching {
             val config = Gson().fromJson(configInfo, UserConfigBean::class.java)
@@ -37,6 +39,9 @@ class DeviceBindVM : ViewModel() {
         }
     }
 
+    /**
+     * 更新贝壳物联的秘钥
+     */
     private suspend fun updateToken() {
         withContext(Dispatchers.IO) {
             val token = IOTRepository.requestToken().access_token
@@ -44,6 +49,9 @@ class DeviceBindVM : ViewModel() {
         }
     }
 
+    /**
+     * 连接硬件设备事件
+     */
     private fun connectDevice() {
         if (IOTLib.getConfigJson().isNotEmpty()) {
             mutableEventLiveData.value = Unit

@@ -3,8 +3,11 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
+        maven {url 'https://developer.huawei.com/repo/'}
     }
+
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -12,6 +15,11 @@ dependencyResolutionManagement {
         mavenCentral()
         maven { url 'https://developer.huawei.com/repo/'}
         maven { url 'https://jitpack.io' }
+    }
+    buildscript {
+        dependencies{
+            classpath 'com.huawei.agconnect:agcp:1.2.1.301'
+        }
     }
 }
 rootProject.name = "SmartFurniture"

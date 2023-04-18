@@ -1,4 +1,4 @@
-package com.android.main
+package com.android.main.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -8,6 +8,9 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.android.main.vm.DeviceBindVM
+import com.android.main.vm.MainVM
+import com.android.main.R
 import com.android.main.database.DatabaseManager
 import com.android.main.databinding.ActivityMainBinding
 import com.android.main.model.RoomData
@@ -22,23 +25,37 @@ import com.llj.baselib.utils.ToastUtils
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+/**
+ * 主页面
+ */
 class MainActivity : IOTBaseActivity<ActivityMainBinding>() {
 
+    //布局文件
     override fun getLayoutId() = R.layout.activity_main
 
+    //数据源
     private lateinit var dataVM: MainVM
+    //设备管理类
     private val deviceVM by viewModels<DeviceBindVM>()
 
+    //初始化方法
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //设置全屏
         StatusBarUtil.setTransparentForWindow(this)
     }
 
+    /**
+     * 初始化 主方法
+     */
     override fun init() {
         super.init()
         initMainView()
     }
 
+    /**
+     * 初始化 视图
+     */
     private fun initMainView() {
         mDataBinding.ivLight.setOnClickListener {
             setVmInitClick {
@@ -62,6 +79,7 @@ class MainActivity : IOTBaseActivity<ActivityMainBinding>() {
             initModel()
         })
         mDataBinding.llHeadIcon.setOnClickListener {
+            //点击跳转到我的页面
             startCommonActivity<MineActivity>()
         }
         mDataBinding.cardView.setOnLongClickListener {
@@ -78,12 +96,24 @@ class MainActivity : IOTBaseActivity<ActivityMainBinding>() {
         if (IOTLib.getConfigJson().isNotEmpty()){
             updateDevState(false)
         }
+
+        mDataBinding.tvHistory.setOnClickListener {
+            //点击跳转到历史记录页面
+            startCommonActivity<HistoryLogActivity>()
+        }
     }
 
+    /**
+     * 更新设备连接状态
+     * 设备在线 离线
+     */
     private fun updateDevState(isOnline:Boolean){
         if (isOnline) onDevLine() else offDevLine()
     }
 
+    /**
+     * 初始化数据源
+     */
     private fun initModel() {
         dataVM = ViewModelProvider(this)[MainVM::class.java]
         dataVM.isFun.observe(this) {
@@ -117,6 +147,9 @@ class MainActivity : IOTBaseActivity<ActivityMainBinding>() {
         }
     }
 
+    /**
+     * 打开扫描二维码
+     */
     private fun prepareScanner() {
         if (this::dataVM.isInitialized){
             ToastUtils.toastShort("您已绑定设备")
@@ -125,10 +158,13 @@ class MainActivity : IOTBaseActivity<ActivityMainBinding>() {
         ScanUtil.startScan(
             this,
             SAO_CODE,
-            HmsScanAnalyzerOptions.Creator().setHmsScanTypes(HmsScan.QRCODE_SCAN_TYPE).create()
+            HmsScanAnalyzerOptions.Creator().setHmsScanTypes(HmsScan.ALL_SCAN_TYPE).create()
         )
     }
 
+    /**
+     * 处理二维码数据
+     */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode != SAO_CODE || data == null) return
@@ -140,18 +176,27 @@ class MainActivity : IOTBaseActivity<ActivityMainBinding>() {
         deviceVM.bindDevice(content)
     }
 
+    /**
+     * 设备离线
+     */
     @SuppressLint("ResourceAsColor")
     private fun offDevLine() {
         mDataBinding.tvDevState.setTextColor(R.color.red)
         mDataBinding.tvDevState.text = "设备离线"
     }
 
+    /**
+     * 设备在线
+     */
     @SuppressLint("ResourceAsColor")
     private fun onDevLine() {
         mDataBinding.tvDevState.setTextColor(R.color.greenDark)
         mDataBinding.tvDevState.text = "设备在线"
     }
 
+    /**
+     * 更新界面上的硬件数据
+     */
     @SuppressLint("SetTextI18n")
     private fun updateUI(roomEntity: RoomData) {
         mDataBinding.tvHump.text = "湿度:${((roomEntity.hump * 10).toInt() / 10).toString()}%"
@@ -160,7 +205,11 @@ class MainActivity : IOTBaseActivity<ActivityMainBinding>() {
         else "室内\n有人"
     }
 
-    private var backCount = 0;
+    private var backCount = 0
+
+    /**
+     * 防止误点击 退出app
+     */
     override fun onKeyUp(keyCode: Int, event: KeyEvent?): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             lifecycleScope.launch {
