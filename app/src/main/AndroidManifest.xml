@@ -25,7 +25,11 @@
             android:launchMode="singleTask"
             android:name=".ui.LoginActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".ui.MainActivity" android:launchMode="singleTask" />
         <activity android:name=".ui.MineActivity" />
@@ -33,11 +37,6 @@
             android:configChanges="screenSize|screenLayout|orientation"
             android:screenOrientation="landscape"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name="com.huawei.hms.hmsscankit.ScanKitActivity" />
     </application>
